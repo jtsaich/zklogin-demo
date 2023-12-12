@@ -1,44 +1,51 @@
 // "use client";
 
 import { authOptions } from "@/lib/auth";
-import prisma from "@/lib/prisma";
+// import prisma from "@/lib/prisma";
 import { deriveUserSalt } from "@/lib/salt";
 import { Place } from "@/types";
 import { jwtToAddress } from "@mysten/zklogin";
 import { getServerSession } from "next-auth/next";
+import { getAccessToken } from "@/lib/auth";
+import { gql } from "graphql-request";
+import graphQLRequest from "@/lib/graphql";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
+  console.log("session", session);
+
   const isLoggedIn = () => session !== null;
+
+  console.log("isLoggedIn", isLoggedIn());
 
   // if the user is logged in, fetch their address
   let address = null;
-  if (session !== null) {
-    const email = session?.user?.email as string;
+  if (session) {
+    const id = session?.user?.id as string;
 
-    // get the user from the database
-    const user = await prisma.user.findUnique({
-      where: {
-        email,
-      },
-    });
+    const query = gql`
+      query GetAccessToken($userId: uuid) {
+        accounts(where: { userId: { _eq: $userId } }) {
+          id_token
+        }
+      }
+    `;
 
-    // get the account from the database
-    const account = await prisma.account.findFirst({
-      where: {
-        userId: user?.id,
-      },
-    });
+    try {
+      const accounts = await graphQLRequest(query, {
+        userId: id,
+      });
 
-    // get the id_token from the account
-    const id_token = account?.id_token;
+      const id_token = accounts?.accounts[0]?.id_token;
 
-    // get the salt from the id_token
-    const salt = deriveUserSalt(id_token as string);
+      const salt = deriveUserSalt(id_token as string);
 
-    // get the address from the id_token and salt
-    address = jwtToAddress(id_token as string, salt);
+      address = jwtToAddress(id_token as string, salt);
+      console.log("address", address);
+    } catch (error) {
+      console.log("Error GraphQL", error);
+    }
   }
 
   const places: Place[] = [
@@ -129,7 +136,6 @@ export default async function Home() {
             </div>
           </>
         )}
-
         {!isLoggedIn() && (
           <div className="flex flex-col gap-4">
             <div>
