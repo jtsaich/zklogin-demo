@@ -16,14 +16,6 @@ const fetchPlaces = async (): Promise<Place[]> => {
 export default async function PlacesComponent() {
   const placesData = await fetchPlaces();
 
-  // React.useEffect(() => {
-  //   const fetchData = async () => {
-
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   return (
     <div className="flex flex-col items-center gap-4">
       <h1>Places</h1>

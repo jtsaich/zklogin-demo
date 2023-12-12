@@ -2,7 +2,6 @@
 
 import PlacesComponent from "@/components/placeComponent";
 import { authOptions } from "@/lib/auth";
-import { Place } from "@/types";
 import { getServerSession } from "next-auth/next";
 import { Suspense } from "react";
 
@@ -21,6 +20,7 @@ export default async function Home() {
             />
           </div>
           <Suspense fallback="...">
+            {/* @ts-expect-error */}
             <PlacesComponent />
           </Suspense>
 
