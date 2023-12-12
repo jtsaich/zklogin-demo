@@ -7,7 +7,20 @@ import { Google } from "./icons";
 import { useSignInModal } from "./sign-in-modal";
 import UserDropdown from "./user-dropdown";
 
-export default function NavBar({ session }: { session: Session | null }) {
+function truncateAddress(address: string) {
+  return `${address.substring(0, 4)}...${address.substring(
+    address.length - 4,
+    address.length
+  )}`;
+}
+
+export default function NavBar({
+  session,
+  address,
+}: {
+  session: Session | null;
+  address: string;
+}) {
   const { SignInModal, setShowSignInModal } = useSignInModal();
   const scrolled = useScroll(50);
 
@@ -27,7 +40,10 @@ export default function NavBar({ session }: { session: Session | null }) {
           </Link>
           <div>
             {session ? (
-              <UserDropdown session={session} />
+              <>
+                <span>{truncateAddress(address)}</span>
+                <UserDropdown session={session} />
+              </>
             ) : (
               <button
                 className="flex gap-2 items-center rounded-full border border-gray-300 p-1.5 px-4 text-sm transition-all bg-gradient-to-tr from-blue-400 via-white to-purple-400 background-animate"
