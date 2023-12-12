@@ -1,10 +1,7 @@
-// "use client";
-
 import PlacesComponent from "@/components/placeComponent";
 import { authOptions } from "@/lib/auth";
 import { Place } from "@/types";
 import { getServerSession } from "next-auth/next";
-import { Suspense } from "react";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -50,16 +47,28 @@ export default async function Home() {
     <>
       <div className="z-10 w-full max-w-xl px-5 xl:px-0">
         <div className="flex flex-col items-center gap-4">
-          <div className="flex flex-col items-center w-full">
+          <div>
             <input
               type="text"
               placeholder="Search..."
               className="input w-full max-w-lg"
             />
           </div>
-          <Suspense fallback="...">
-            <PlacesComponent />
-          </Suspense>
+          <PlacesComponent />
+          {places.map(({ id, displayName, formattedAddress }) => (
+            <div key={id} className="card lg:card-side bg-base-100 shadow-xl">
+              {/* <figure>
+                      <img src={websiteUri} alt={displayName.text} />
+                    </figure> */}
+              <div className="card-body">
+                <h2 className="card-title">{displayName.text}</h2>
+                <p>{formattedAddress}</p>
+                <div className="card-actions justify-end">
+                  <button className="btn btn-primary">Detail</button>
+                </div>
+              </div>
+            </div>
+          ))}
 
           <p
             className="animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-md mt-2"
