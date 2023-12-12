@@ -4,7 +4,6 @@ import cx from "classnames";
 import { Suspense } from "react";
 import { inter, sfPro } from "./fonts";
 import "./globals.css";
-// import Footer from "@/components/layout/footer";
 
 export const metadata = {
   title: "Scale3 zkLogin - Authentication for your next project on Sui",
