@@ -89,29 +89,14 @@ export default async function Home() {
       <div className="z-10 w-full max-w-xl px-5 xl:px-0">
         {isLoggedIn() && (
           <>
-            <h1
-              className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-4xl md:leading-[5rem]"
-              style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-            >
+            <h1 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm [text-wrap:balance] md:text-4xl md:leading-[5rem]">
               {`Welcome back, ${session?.user?.name}`}
             </h1>
             <div className="border-[1px] border-slate-300 rounded-lg px-3 py-4 flex flex-col gap-2 w-full">
-              <p
-                className="animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-lg"
-                style={{
-                  animationDelay: "0.25s",
-                  animationFillMode: "forwards",
-                }}
-              >
+              <p className="text-center text-gray-500 [text-wrap:balance] md:text-lg">
                 Your Sui address is:
               </p>
-              <p
-                className="font-mono text-sm text-gray-700 animate-fade-up text-center opacity-0 [text-wrap:balance]"
-                style={{
-                  animationDelay: "0.25s",
-                  animationFillMode: "forwards",
-                }}
-              >
+              <p className="font-mono text-sm text-gray-700 animate-fade-up text-center [text-wrap:balance]">
                 {address}
               </p>
             </div>
