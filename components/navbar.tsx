@@ -19,7 +19,7 @@ export default function NavBar({
   address,
 }: {
   session: Session | null;
-  address: string;
+  address: string | null;
 }) {
   const { SignInModal, setShowSignInModal } = useSignInModal();
   const scrolled = useScroll(50);
