@@ -7,6 +7,15 @@ export async function getPlacesByGoogleIds(googlePlaceIds: string[]) {
       id
       metadata
       rating
+      reviews {
+        id
+        user_id
+        rating
+        review
+        transaction_id
+        place_id
+        created_at
+      }
       goolge_place_id
       created_at
     }
@@ -29,6 +38,15 @@ export async function getPlaceByGoogleId(id: string) {
       id
       metadata
       rating
+      reviews {
+        id
+        user_id
+        rating
+        review
+        transaction_id
+        place_id
+        created_at
+      }
       goolge_place_id
       created_at
     }
