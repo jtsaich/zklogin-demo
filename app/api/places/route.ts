@@ -1,10 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 
-type GooglePlacesResponse = {
-  candidates: Array<{ name: string }>;
-  status: string;
-};
-
 export async function GET(req: NextRequest) {
   // const { searchParams } = new URL(req.url);
   // const id = searchParams.get("id");

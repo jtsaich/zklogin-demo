@@ -21,3 +21,5 @@ export interface Place {
     languageCode: string;
   };
 }
+
+export interface PlaceDetail extends Place {}

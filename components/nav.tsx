@@ -31,7 +31,6 @@ export default async function Nav() {
       const salt = deriveUserSalt(id_token as string);
 
       address = jwtToAddress(id_token as string, salt);
-      console.log("address", address);
     } catch (error) {
       console.log("Error GraphQL", error);
     }

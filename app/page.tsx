@@ -9,43 +9,6 @@ import { Suspense } from "react";
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
-  const places: Place[] = [
-    {
-      id: "safdsafawe",
-      types: [
-        "seafood_restaurant",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment",
-      ],
-      formattedAddress:
-        "PIER 1 1/2 The Embarcadero N, San Francisco, CA 94105, USA",
-      websiteUri: "http://lamarsf.com/",
-      displayName: {
-        text: "La Mar Cocina Peruana",
-        languageCode: "en",
-      },
-    },
-    {
-      id: "1fjsdak",
-      types: [
-        "greek_restaurant",
-        "meal_takeaway",
-        "restaurant",
-        "food",
-        "point_of_interest",
-        "establishment",
-      ],
-      formattedAddress: "200 Jackson St, San Francisco, CA 94111, USA",
-      websiteUri: "https://kokkari.com/",
-      displayName: {
-        text: "Kokkari Estiatorio",
-        languageCode: "en",
-      },
-    },
-  ];
-
   return (
     <>
       <div className="z-10 w-full max-w-xl px-5 xl:px-0">
