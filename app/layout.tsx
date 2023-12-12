@@ -39,6 +39,10 @@ export default async function RootLayout({
         {/* <Footer /> */}
         <Analytics />
       </body>
+      <script
+        async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlsKdpc3vluW5nANFlrnXDc5EKOdIUArQ&libraries=places"
+      ></script>
     </html>
   );
 }
