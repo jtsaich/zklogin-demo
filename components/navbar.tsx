@@ -7,7 +7,10 @@ import { Google } from "./icons";
 import { useSignInModal } from "./sign-in-modal";
 import UserDropdown from "./user-dropdown";
 
-function truncateAddress(address: string) {
+function truncateAddress(address: string | null) {
+  if (!address) {
+    return "";
+  }
   return `${address.substring(0, 4)}...${address.substring(
     address.length - 4,
     address.length
