@@ -6,7 +6,6 @@ import { deriveUserSalt } from "@/lib/salt";
 import { Place } from "@/types";
 import { jwtToAddress } from "@mysten/zklogin";
 import { getServerSession } from "next-auth/next";
-import { getAccessToken } from "@/lib/auth";
 import { gql } from "graphql-request";
 import graphQLRequest from "@/lib/graphql";
 
