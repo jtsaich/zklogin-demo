@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 const fetchPlace = async (id: string): Promise<PlaceDetail | undefined> => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/places/${id}`);
+    const response = await axios.get(`/api/places/${id}`);
     console.log(response.data);
     return response.data;
   } catch (error) {

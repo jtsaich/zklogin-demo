@@ -5,7 +5,7 @@ import PlaceCard from "./placeCard";
 
 const fetchPlaces = async (): Promise<Place[]> => {
   try {
-    const response = await axios.get("http://localhost:3000/api/places");
+    const response = await axios.get("/api/places");
     return response.data;
   } catch (error) {
     console.error("Error fetching places:", error);
