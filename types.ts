@@ -22,4 +22,12 @@ export interface Place {
   };
 }
 
-export interface PlaceDetail extends Place {}
+export interface PlaceDetail extends Place {
+  reviews: {
+    rating: number;
+    text: {
+      text: string;
+    };
+    publishedTime: string;
+  }[];
+}

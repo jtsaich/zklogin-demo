@@ -1,12 +1,10 @@
-// "use client";
+"use client";
 
 import PlacesComponent from "@/components/placeComponent";
-import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth/next";
-import { Suspense } from "react";
+import { useState } from "react";
 
-export default async function Home() {
-  const session = await getServerSession(authOptions);
+export default function Home() {
+  const [textQuery, setTextQuery] = useState("");
 
   return (
     <>
@@ -17,12 +15,11 @@ export default async function Home() {
               type="text"
               placeholder="Search..."
               className="input w-full max-w-lg"
+              value={textQuery}
+              onChange={(e) => setTextQuery(e.target.value)}
             />
           </div>
-          <Suspense fallback="...">
-            {/* @ts-expect-error */}
-            <PlacesComponent />
-          </Suspense>
+          <PlacesComponent q={textQuery} />
 
           <p
             className="animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-md mt-2"
