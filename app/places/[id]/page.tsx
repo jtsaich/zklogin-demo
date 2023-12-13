@@ -2,7 +2,7 @@
 
 import { PlaceDetail } from "@/types";
 import axios from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const fetchPlace = async (id: string): Promise<PlaceDetail | undefined> => {
   try {
@@ -17,11 +17,12 @@ const fetchPlace = async (id: string): Promise<PlaceDetail | undefined> => {
   }
 };
 
-export default async function PlaceDetail() {
-  const router = useRouter();
-  const { id } = router.query;
-
-  const place = await fetchPlace(id as string);
+export default async function PlaceDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const place = await fetchPlace(params.id as string);
   if (!place) {
     return;
   }
