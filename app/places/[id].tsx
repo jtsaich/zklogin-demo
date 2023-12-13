@@ -6,7 +6,9 @@ import { useRouter } from "next/router";
 
 const fetchPlace = async (id: string): Promise<PlaceDetail | undefined> => {
   try {
-    const response = await axios.get(`/api/places/${id}`);
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_HOST}/api/places/${id}`
+    );
     console.log(response.data);
     return response.data;
   } catch (error) {
