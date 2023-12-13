@@ -6,17 +6,14 @@ import { inter, sfPro } from "./fonts";
 import "./globals.css";
 
 export const metadata = {
-  title: "Scale3 zkLogin - Authentication for your next project on Sui",
-  description:
-    "Scale3 zkLogin is the all-in-one solution for your next project on Sui. It includes a design system, authentication, analytics, and more.",
+  title: "SuiReviews - Taipei Blockchain Week 2023",
+  description: "Powered by zkLogin, a privacy centric location review app.",
   twitter: {
     card: "summary_large_image",
-    title: "Scale3 zkLogin - Authentication for your next project on Sui",
-    description:
-      "Scale3 zkLogin is the all-in-one solution for your next project on Sui. It includes a design system, authentication, analytics, and more.",
-    creator: "@scale3labs",
+    title: "SuiReviews - Taipei Blockchain Week 2023",
+    description: "Powered by zkLogin, a privacy centric location review app.",
   },
-  metadataBase: new URL("https://zklogin.scale3labs.com"),
+  metadataBase: new URL("https://zklogin-demo-jtsaich.vercel.app"),
   themeColor: "#FFF",
 };
 
